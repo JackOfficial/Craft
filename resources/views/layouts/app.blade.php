@@ -26,9 +26,14 @@
 </head>
 
 <body>
+@include('layouts.topbar')
+@include('layouts.navbar')
 
     @yield('content')
 
+     <!-- Footer Start -->
+     @include('layouts.footer')
+    <!-- Footer End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
