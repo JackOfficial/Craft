@@ -23,6 +23,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
@@ -51,6 +52,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('front/js/main.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>
