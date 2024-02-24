@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Categories</h1>
+            <h1>Products</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">Categories</li>
+              <li class="breadcrumb-item active">Products</li>
             </ol>
           </div>
         </div>
@@ -26,20 +26,20 @@
       <div class="row">
           <div class="col-12">
 
-            @if (Session::has('categorySuccess'))
+            @if (Session::has('productSuccess'))
             <div class="alert alert-success alert-dismissible mb-2" style="margin: 5px 5px 0px 5px;">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-          <strong><i class="fas fa-check"></i></strong> {{ Session::get('categorySuccess') }} </div>
-          @elseif(Session::has('categoryFail'))
+          <strong><i class="fas fa-check"></i></strong> {{ Session::get('productSuccess') }} </div>
+          @elseif(Session::has('productFail'))
           <div class="alert alert-danger alert-dismissible mb-2" style="margin: 5px 5px 0px 5px;">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-          <strong>FAILED:</strong> {{ Session::get('categoryFail') }} </div> 
+          <strong>FAILED:</strong> {{ Session::get('productFail') }} </div> 
             @endif
 
-            <a href="{{ route('admin.product-categories.create') }}" class="btn btn-primary btn-sm mb-2">Add Category</a>
+            <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm mb-2">Add Product</a>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">{{ $categoriesCounter }} {{ ($categoriesCounter > 1) ? 'Categories' : 'Category' }}</h3>
+                <h3 class="card-title">{{ $productsCounter }} {{ ($productsCounter > 1) ? 'Categories' : 'Category' }}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -50,46 +50,48 @@
                     <th>Category</th>
                     <th>Photo</th>
                     <th>Description</th>
+                    <th>Price</th>
+                    <th>Qty</th>
                     <th>Status</th>
                     <th>Created at</th>
-                    <th>Updated at</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
 
-                   @forelse ($categories as $category)
+                   @forelse ($products as $product)
                    <tr> 
                     <td>{{ $loop->iteration }}</td>
-                    <td><a href="{{ route('admin.product-categories.show', $category->id) }}">{{ $category->category }}</a></td>
+                    <td>{{ $product->category ?? 'No Category' }}</td>
                     <td>
-                      <a href="/storage/{{ $category->photo }}">
-                        <img alt="African Painting" class="img img-responsive thumbnail" style="width: 100px; height: auto;" 
-                        src="{{ asset('storage/photos/category_thumbnail/' . substr($category->photo, 16, strlen($category->photo))) }}" />
-                      </a>
+                      <a href="/storage/{{ $product->photo }}">
+                        <img alt="{{ $product->product }}" class="img img-responsive thumbnail" style="width: 100px; height: auto;" src="{{ asset('storage/photos/product_photos_thumb/' . $product->photo) }}" />
+                    <div class="text-center bg-secondary"><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->product  }}</a></div>  
+                    </a>
                     </td>
-                    <td>{{ $category->description != null ? Str::limit($category->description, 25) : 'No Description' }}</td>
+                    <td>{!! $product->description != null ? Str::limit($product->description, 25) : 'No Description' !!}</td>
+                    <td>{{ number_format($product->price) }} RWF</td>
+                    <td>{{ $product->quantity }}</td>
                     <td>
-                      @if($category->status == 1)
+                      @if($product->status == 1)
                         <span class="badge badge-success">Active</span>
                       @else
                         <span class="badge badge-danger">Disactive</span>
                       @endif
                       </td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{ $category->updated_at }}</td>
+                    <td>{{ $product->created_at }}</td>
                     <td>
-                        <form method="POST" action="{{ route('admin.product-categories.destroy', $category->id) }}">
+                        <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}">
                           @csrf
                             @method('DELETE')
-                            <a class="btn btn-success btn-sm" href="{{ route('admin.product-categories.edit', $category->id) }}"><i class="fa fa-edit"></i> Edit</a>&nbsp;
+                            <a class="btn btn-success btn-sm" href="{{ route('admin.products.edit', $product->id) }}"><i class="fa fa-edit"></i> Edit</a>&nbsp;
                            <button type="submit" class="btn btn-danger btn-sm"><span><i class="fa fa-trash"></i></span> Delete</button>
                         </form>
                         </td>
                   </tr>   
                   @empty
                   <tr> 
-                    <td colspan="8" class="text-center py-2">No category to display</td>
+                    <td colspan="9" class="text-center py-2">No product to display</td>
                   </tr>   
                    @endforelse
                   
@@ -101,9 +103,10 @@
                     <th>Category</th>
                     <th>Photo</th>
                     <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
                     <th>Status</th>
                     <th>Created at</th>
-                    <th>Updated at</th>
                     <th>Actions</th>
                   </tr>
                   </tfoot>

@@ -19,6 +19,12 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('price');
             $table->string('quantity');
+            $table->string('material')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('weight')->nullable();
             $table->string('status')->default(1);
             $table->timestamps();
             $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');

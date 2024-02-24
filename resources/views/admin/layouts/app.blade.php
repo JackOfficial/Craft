@@ -231,47 +231,23 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Social Media
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Social Media</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Social Media</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Categories
+                Products
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('admin.product-categories.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
+                  <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('admin.products.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Categories</p>
+                  <p>Products</p>
                 </a>
               </li>
             </ul>
@@ -281,7 +257,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Services
+                Blogs
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -289,13 +265,13 @@
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Service</p>
+                  <p>Blogs</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Services</p>
+                  <p>Bloggers</p>
                 </a>
               </li>
             </ul>
@@ -311,14 +287,6 @@
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-plus"></i>
-              <p>
-                Add Fund
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -408,44 +376,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-        
-          
-           <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Wallets
-              </p>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="/bfcurrency" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Set BIF
-              </p>
-            </a>
-          </li>
-            
-          <li class="nav-item">
-            <a href="/admin/fund" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Earnings
-                <span class="right badge badge-danger">$450</span>
-              </p>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Bonuses
-              </p>
-            </a>
           </li>
           
           <li class="nav-item">
