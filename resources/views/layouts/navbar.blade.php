@@ -38,21 +38,37 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="index.html" class="nav-item nav-link active">Home</a>
-                                <a href="shop.html" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                        <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                    </div>
-                                </div>
+                                <a href="/" class="nav-item nav-link active">Home</a>
+                                <a href="{{ route('products.index') }}" class="nav-item nav-link">Shop</a>
+                                <a href="detail.html" class="nav-item nav-link">About</a>
                                 <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="detail.html" class="nav-item nav-link">Blog</a>
+                                <a href="detail.html" class="nav-item nav-link">FAQs</a>
                             </div>
                             <div class="navbar-nav ml-auto py-0">
-                                <a href="" class="nav-item nav-link">Login</a>
-                                <a href="" class="nav-item nav-link">Register</a>
+                                @guest
+                                @if (Route::has('login'))
+                                <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
+                                @endif
+                                @if(Route::has('register'))
+                                <a href="{{route('register')}}" class="nav-item nav-link">Register</a>
+                                @endif
+                    @endguest
+
+                    @auth
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span><i class="fa fa-user"></i> {{ Auth::user()->name }}</span></a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <a href="/home" class="dropdown-item">My Craft</a>
+                                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                      @endauth
+
                             </div>
                         </div>
                     </nav>

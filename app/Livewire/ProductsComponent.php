@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Products;
+use Livewire\Component;
 
-class OtherProductsComponent extends Component
+class ProductsComponent extends Component
 {
     public function addProductToCart($id){
         $product = Products::findOrFail($id);
@@ -28,10 +28,10 @@ class OtherProductsComponent extends Component
                dd("Product could not be added to the cart");
            }
        }
-       
+
     public function render()
     {
-        $otherProducts = Products::all();
-        return view('livewire.other-products-component', compact('otherProducts'));
+        $products = Products::all();
+        return view('livewire.products-component', compact('products'));
     }
 }

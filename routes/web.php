@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductCategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailsController;
+use App\Http\Controllers\ProductsController as Products;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +21,15 @@ use App\Http\Controllers\ProductDetailsController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name("home");
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'home'])->name("home");
 Route::get('/product/{id}', [ProductDetailsController::class, 'details']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware("auth");
+Route::resource('products', Products::class);
+
+//Google oauth
+Route::get('redirect', [SocialController::class, 'redirect'])->name('redirect');
+Route::get('callback', [SocialController::class, 'callback'])->name('callback');
 
 //ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->group(function () {

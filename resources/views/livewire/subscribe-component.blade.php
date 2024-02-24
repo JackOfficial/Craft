@@ -3,7 +3,7 @@
         <div class="col-md-6 col-12 py-5">
             <div class="text-center mb-2 pb-2">
                 <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
-                <p>Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo ipsum eirmod duo labore labore.</p>
+                <p>Subscribe to stay in the loop with the latest trends, receive expert tips, and enjoy exclusive access to our curated collections.</p>
                 @if(Session::has('subscribeSuccess'))
                 <div class="alert alert-success alert-sm">{{ Session::get('subscribeSuccess') }}</div>
                 @elseif(Session::has('subscribeFail'))
