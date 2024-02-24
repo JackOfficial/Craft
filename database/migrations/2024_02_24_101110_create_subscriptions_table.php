@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('email')->unique();
+            $table->string('verified')->default(0);
             $table->timestamps();
         });
     }

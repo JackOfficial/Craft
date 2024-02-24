@@ -12,11 +12,14 @@
             </div>
             <form wire:click.prevent="subscribe">
                 <div class="input-group">
-                    <input type="text" wire:model="email" class="form-control border-white p-4" placeholder="Enter your email">
+                    <input type="text" wire:model="email" class="form-control border-white p-4 @error('email') is-invalid @enderror" placeholder="Enter your email">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary px-4">Subscribe <div wire:loading wire:loading.target="subscribe">...</div></button>
                     </div>
                 </div>
+                @error('email') 
+                <div class="text-danger">{{ $message }}</div> 
+                 @enderror
             </form>
         </div>
     </div>

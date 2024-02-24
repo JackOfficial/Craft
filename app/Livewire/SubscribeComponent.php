@@ -11,7 +11,7 @@ class SubscribeComponent extends Component
 
     public function subscribe(){
         $this->validate([
-            'email' => ['required', 'email']
+            'email' => 'required|email|max:255|unique:subscriptions'
         ]);
 
         $subscribe = Subscription::create([
